@@ -62,6 +62,7 @@ Content-Type: application/json
 {
     "text": "I loved the spiderman movie!"
 }
+```
 
 **Response:**
 
@@ -72,6 +73,7 @@ Content-Type: application/json
 {
     "sentiment": "positive"
 }
+```
 
 ## Handling Errors
 
@@ -86,6 +88,7 @@ Content-Type: application/json
 {
     "text": ""
 }
+```
 
 **Response:**
 
@@ -96,3 +99,4 @@ Content-Type: application/json
 {
     "error": "Empty text provided"
 }
+```
