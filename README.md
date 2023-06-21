@@ -129,7 +129,15 @@ To run the Sentiment Analysis API locally, follow these steps:
   ```
   python manage.py runserver
   ```
-8.  Access the landing page at http://localhost:8000/ and the API at http://localhost:8000/analyze/
+8.  Open a new terminal while the existing Django server is running and change into the client directory:
+  ```
+  cd client
+  ```
+9.  Run the program to test the api and you may customize the input text at payload:
+  ```
+  python client.py
+  ```
+10.  Access the landing page at http://localhost:8000/ and the API at http://localhost:8000/analyze/
 
 ## Customization
 
