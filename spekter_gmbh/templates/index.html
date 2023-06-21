@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <head>
+    <title>SPEKTER Sentiment Analyzer</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="analyzer">
+        <h1>Sentiment Analyzer</h1>
+        <form id="sentimentForm">
+          <label for="textInput">Enter Text:</label>
+          <input type="text" id="textInput" name="text" required>
+          <button type="submit">Analyze</button>
+        </form>
+        <div id="resultContainer"></div>
+      </div>
+      <div class="text-block">
+        <h1>Example Texts</h1>
+        <p class="copyable-text">You can have it all. Just not all at once.</p>
+        <p class="copyable-text">I am a lazy person</p>
+        <p class="copyable-text">Say something positive, and you’ll see something positive.</p>
+        <p class="copyable-text">Today's traffic was the worst.</p>
+        <p class="copyable-text">Train your mind to see the good in every situation.</p>
+        <p class="copyable-text">It is difficult to endure such a harsh weather.</p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Handle form submission
+        $('#sentimentForm').submit(function(event) {
+          event.preventDefault();
+          var text = $('#textInput').val();
+
+          // Send POST request to the API
+          $.ajax({
+            url: '/analyze/',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 'text': text }),
+            success: function(response) {
+              var sentiment = response.sentiment;
+              $('#resultContainer').text('Sentiment: ' + sentiment);
+            },
+            error: function(xhr, textStatus, error) {
+              console.log('Error occurred while making the request:', error);
+              $('#resultContainer').text('An error occurred.');
+            }
+          });
+        });
+
+        // Handle text click to copy
+        $('.copyable-text').click(function() {
+          var lineText = $(this).text();
+          copyToClipboard(lineText);
+          toastr.success('Text Copied');
+        });
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text) {
+          var tempInput = $('<input>');
+          $('body').append(tempInput);
+          tempInput.val(text).select();
+          document.execCommand('copy');
+          tempInput.remove();
+        }
+      });
+    </script>
+  </body>
+</html>
