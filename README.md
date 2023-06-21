@@ -109,3 +109,38 @@ To run the Sentiment Analysis API locally, follow these steps:
   ```
   python -m venv venv
   ```
+3.  Activate the virtual environment:
+  ```
+  venv\Scripts\activate
+  ```
+4.  Install the required dependencies:
+  ```
+  pip install -r requirements.txt
+  ```
+5.  Change into the project directory:
+  ```
+  cd spekter_gmbh
+  ```
+6.  Run database migrations:
+  ```
+  python manage.py migrate
+  ```
+7.  Start the development server:
+  ```
+  python manage.py runserver
+  ```
+8.  Access the landing page at http://localhost:8000/ and the API at http://localhost:8000/analyze/
+
+## Customization
+
+The Sentiment Analysis API can be customized to fit specific requirements. Here are a few customization options:
+
+- **Model Selection**: The API currently uses the "setfit" library's pre-trained sentiment analysis model. You can explore other models and libraries to integrate a different sentiment analysis model.
+- **Frontend Design**: The HTML template provided in the project can be customized to match your desired frontend design. You can modify the template or create new templates based on your requirements.
+- **Error Handling**: The API currently handles basic errors such as empty text. You can enhance the error handling mechanism to address specific error scenarios and provide more detailed error messages.
+
+Please note that customization options may require additional development and modifications to the existing codebase.
+
+## Conclusion
+
+The Sentiment Analysis API allows users to analyze the sentiment of text input. This documentation provides an overview of the project's architecture, API endpoints, usage examples, installation instructions, and customization options. By following the guidelines provided, users can integrate and utilize the Sentiment Analysis API effectively.
