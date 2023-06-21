@@ -9,6 +9,7 @@ The Sentiment Analysis API is a web application that allows users to analyze the
 - [Architecture](#architecture)
 - [API Endpoints](#api-endpoints)
 - [Usage Examples](#usage-examples)
+- [Handling Errors](#handling-errors)
 - [Installation](#installation)
 - [Customization](#customization)
 - [Conclusion](#conclusion)
@@ -60,4 +61,38 @@ Content-Type: application/json
 
 {
     "text": "I loved the spiderman movie!"
+}
+
+**Response:**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "sentiment": "positive"
+}
+
+## Handling Errors
+
+If there is an error during the analysis process or if the request payload is invalid, the API will respond with an appropriate error message.
+
+**Request:**
+
+```http
+POST /analyze/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "text": ""
+}
+
+**Response:**
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+    "error": "Empty text provided"
 }
