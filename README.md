@@ -100,3 +100,12 @@ Content-Type: application/json
     "error": "Empty text provided"
 }
 ```
+## Installation
+
+To run the Sentiment Analysis API locally, follow these steps:
+
+1.  Clone the project repository from GitHub.
+2.  Create a virtual environment:
+  ```
+  python -m venv venv
+  ```
