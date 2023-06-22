@@ -105,7 +105,10 @@ Content-Type: application/json
 To run the Sentiment Analysis API locally, follow these steps:
 
 1.  Clone the project repository from GitHub.
-2.  Create a virtual environment:
+  ```
+  git clone https://github.com/99-aqil/spekter-gmbh.git
+  ```
+3.  Create a virtual environment:
   ```
   python -m venv venv
   ```
